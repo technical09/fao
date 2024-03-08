@@ -1,0 +1,77 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model alimentos {
+  idfood               Int                    @id
+  group_               Int?
+  subgroup             String?                @db.VarChar(50)
+  country              String?                @db.VarChar(255)
+  type_                String?                @db.VarChar(5)
+  isscaap              String?                @db.VarChar(20)
+  alpha                String?                @map("3_alpha") @db.VarChar(20)
+  local_name           String?                @db.VarChar(255)
+  eng_name             String?                @db.VarChar(255)
+  processing           String?                @db.VarChar(5)
+  sci_name             String?                @db.VarChar(255)
+  asfis_eng_name       String?                @db.VarChar(255)
+  asfis_sci_name       String?                @db.VarChar(255)
+  season               String?                @db.VarChar(100)
+  other                String?                @db.VarChar(750)
+  n                    String?                @db.VarChar(255)
+  proc_comm            String?                @db.VarChar(750)
+  pub_year             Int?
+  biblio               String?                @db.VarChar(25)
+  compiler             String?                @db.VarChar(10)
+  last_rev             String?                @db.VarChar(10)
+  specie               String?                @db.VarChar(255)
+  grupo                grupo?                 @relation(fields: [group_], references: [idgroup], onDelete: NoAction, onUpdate: NoAction, map: "FK_Alimentos_Grupo")
+  tipo                 tipo?                  @relation(fields: [type_], references: [idtype], onDelete: NoAction, onUpdate: NoAction, map: "FK_Alimentos_Tipo")
+  alimentoscomponentes alimentoscomponentes[]
+
+  @@index([group_], map: "FK_Alimentos_Grupo")
+  @@index([type_], map: "FK_Alimentos_Tipo")
+}
+
+model alimentoscomponentes {
+  idfood      Int
+  idcomp      Int
+  VALUE       String?     @db.VarChar(25)
+  alimentos   alimentos   @relation(fields: [idfood], references: [idfood], onUpdate: Restrict, map: "FK_Alimentos")
+  componentes componentes @relation(fields: [idcomp], references: [idcomp], onUpdate: Restrict, map: "FK_Componentes")
+
+  @@id([idfood, idcomp])
+  @@index([idcomp], map: "FK_Componentes")
+}
+
+model componentes {
+  idcomp               Int                    @id
+  name                 String?                @db.VarChar(35)
+  long_name            String?                @db.VarChar(200)
+  unit                 String?                @db.VarChar(10)
+  comments             String?                @db.VarChar(500)
+  alimentoscomponentes alimentoscomponentes[]
+}
+
+model grupo {
+  idgroup   Int         @id
+  name      String?     @db.VarChar(60)
+  alimentos alimentos[]
+}
+
+model tipo {
+  idtype    String      @id @db.VarChar(5)
+  name      String?     @db.VarChar(60)
+  alimentos alimentos[]
+}
+
+model users {
+  id    Bytes  @id @default(dbgenerated("(uuid())")) @db.Binary(16)
+  email String @unique(map: "email") @db.VarChar(255)
+  pass  String @db.VarChar(60)
+}
