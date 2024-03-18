@@ -1,0 +1,55 @@
+'use client';
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import clsx from 'clsx';
+import  { getGroupsApi } from "@/app/lib/data";
+import { useEffect, useState } from "react";
+
+export default async function NavLinks(){
+    const [datos, setDatos] = useState([]);
+    
+    const test = getGroupsApi();
+
+    useEffect(() => {
+      const groups = async () => {
+        try {
+          const data = await getGroupsApi();
+          setDatos(data.groups);
+          console.log("Función: "+data);
+        } catch (error) {
+          console.error('Error al obtener los datos:', error);
+        }
+      };
+    
+      groups();
+    }, []);
+
+    console.log("Función: "+datos);
+
+    return (
+        <ul>
+            {datos.map((item) => (
+                <li key={item.idgroup}>
+                {item.name}
+                </li>
+          ))}
+        </ul>
+    );
+
+}
+
+/*
+export default async function NavLinks(){
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+    const groups = Response.json(res);
+    console.log("Navlinks: "+groups);
+    return (
+            <ul>
+                <li>
+
+                </li>
+            </ul>
+    );
+}
+*/

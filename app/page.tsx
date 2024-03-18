@@ -1,4 +1,5 @@
 import Image from "next/image";
+import LogoQualitas from "./components/logo";
 import Link from "next/link";
 
 export default function Home() {
@@ -8,14 +9,9 @@ export default function Home() {
        
     //  </div>
     //</main>
+    <div>
+      <LogoQualitas />
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
-      <Image
-        src="/next.svg"
-        alt="Logo"
-        className="object-cover w-40 h-40 mb-8 rounded-full"
-        width={400}
-        height={200}
-        />
       <h1 className="text-4xl font-bold mb-4">Qualitas Analítica Alimentaria</h1>
       <p className="text-2xl mb-8 px-4 md:px-0">Acceso a base de datos componentes de alimentos.</p>
       <p className="text-xl mb-8 px-4 md:px-0">Para poder acceder, necesita estar registrado en el sistema. Si no lo está, contacte con nosotros.</p>
@@ -31,6 +27,7 @@ export default function Home() {
       <div className="flex justify-center items-center mt-8">
         <p className="text-lg mb-8 px-4 md:px-0">Puede volver a la web de Qualitas Analítica Alimentaria pulsando</p>
       </div>
+  </div>
   </div>
   );
 }
