@@ -1,23 +1,49 @@
-// traer de la ruta el idgroup
-export default async function Group({ params }: any){
-    const {idgroup}= params;
-    const url="http://localhost:3000/api/group/"+idgroup;
-    const getGroup = async () => {
-        const res = await fetch(url);
-        return res.json();  
-    }
+'use client';
 
-    const grupos=await getGroup();
-    return (
-        <>
-        <h1>Listado grupo {idgroup}</h1>
-        <ul>
+import { useEffect, useState } from "react";
+import { fetchGroupFoods } from "@/app/lib/data";
+import DataTable from "react-data-table-component";
+import  {columns, paginationOptions} from "./tableOptions" 
+
+
+export default function Group({params}:{ params: { idgroup: number }}){
+    const [foodGroup, setFoodGroup] =useState([]);
+    const idgroup=params.idgroup;
+    const table_title="Alimentos del grupo "+`${idgroup}`;
+
+    useEffect( ()=>{
+        async function getData(){
+            setFoodGroup(await fetchGroupFoods(idgroup));
+        }
+        getData();
+    },[]);
+
+    return(
+        <DataTable
+            title={table_title}
+            columns={columns}
+            data={foodGroup}
+            keyField="idfood"
+            highlightOnHover
+            striped
+            pointerOnHover
+            pagination
+            paginationComponentOptions={paginationOptions}
+            responsive
+            noDataComponent="No hay alimentos en este grupo."
+            onRowDoubleClicked={alert}
+            
+        />
+        /*
+        <ul className="list-disc">
             {
-                grupos.map( (item: { idfood: string }, index: number) => {
-                    return <li key={index}>{item.idfood}</li>
+                foodGroup.map((food: any, index: any)=>{
+                    return (
+                        <li key={food.idfood}>{food.idfood} - {food.eng_name}</li>
+                    );
                 } )
             }
         </ul>
-        </>
+        */ 
     );
 }

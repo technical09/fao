@@ -17,7 +17,7 @@ export default async function NavLinks(){
       href="/search">
     <span className="text-xl p-4 pb-4">Buscador</span>
     </Link>
-    <ul>
+    <ul className="list-disc">
       <li><span className="text-xl p-4 pb-4">Grupos de Alimentos</span></li>
       {groups.map((g) => (
         <li className="pl-4 p-" key={g.idgroup}>
