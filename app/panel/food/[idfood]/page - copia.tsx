@@ -1,4 +1,4 @@
-import FoodDetails from "@/app/components/food";
+import FoodDetails from "@/app/components/foodDetails";
 
 export async function  getFood(idfood:number) {
     const res = await fetch(`http://localhost:3000/api/food/${idfood}`);

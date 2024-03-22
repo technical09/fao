@@ -4,12 +4,15 @@ import { NextResponse } from "next/server";
 export async function GET(request: Request, { params }: { params: { idfood: string } }) {
     const idfood: number = parseInt(params.idfood);
     try{
-        const foodData = await prisma.alimentos.findMany({
-            select:{
-                idfood: true,
-                eng_name: true,
-                sci_name: true,
-                pub_year: true,
+        const foodData = await prisma.alimentos.findUnique({
+            include:{
+                alimentoscomponentes: {
+                    include: {
+                        componentes: true,
+                    }
+                },
+                grupo: true,
+                
             },
             where:{
                 idfood: idfood
@@ -22,7 +25,7 @@ export async function GET(request: Request, { params }: { params: { idfood: stri
     catch(error){
         console.error(error);
         return Response.json(
-            {error: "Failed to get food data."},
+            {error: "Failed to get food details."},
             {status: 500},
         );
     }
