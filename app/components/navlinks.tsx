@@ -13,19 +13,23 @@ export default async function NavLinks(){
   //console.log("Datos: "+Object.keys(groups));
   return (
     <>
+    <div className="flex rounded-md hover:bg-black hover:text-white">
     <Link
       href="/search">
-    <span className="text-xl p-4 pb-4">Buscador</span>
+    <span className="text-xl p-4 pb-4 ">Buscador</span>
     </Link>
+    </div>
     <ul className="list-disc">
       <li><span className="text-xl p-4 pb-4">Grupos de Alimentos</span></li>
       {groups.map((g) => (
         <li className="pl-4 p-" key={g.idgroup}>
+          <div className="rounded-md p-1 hover:bg-black hover:text-white">
           <Link
             href={`/panel/group/${g.idgroup}`}
           >
-            <span>{g.name}</span>
+           <span>- {g.name}</span>
           </Link>
+        </div>
         </li>
       )
       )}

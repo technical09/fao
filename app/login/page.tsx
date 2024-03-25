@@ -1,5 +1,13 @@
 import LoginForm from "../components/loginform";
 
+export default function Home(){
+    return (
+        <LoginForm />
+    );
+}
+
+
+/*
 export default function Home() {
     return (
         <div className="h-screen bg-gray-200 py-20 p-4 md:p-20 lg:p-32">
@@ -33,4 +41,6 @@ export default function Home() {
             </div>
         </div>
     );
+    
 }
+*/
