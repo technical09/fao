@@ -92,7 +92,7 @@ export default function FoodDetails(props: any){
                     <div className="flex mt-4 p-2 rounded-md bg-neutral-800 text-white justify-center">
                         <span className="text-xl">Componentes Asociados</span>
                     </div>
-                    <div className="grid grid-cols-4 gap-4 p-2">
+                    <div className="grid grid-cols-4 gap-4 p-2 overflow-y-auto max-h-screen">
                         <FoodComponents idfood={idfood}/>
                     </div>
                 </div>
