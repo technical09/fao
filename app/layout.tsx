@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Qualitas Analítica Alimentaria",
-  description: "Qualitas Analítica Alimentaria - Descripción",
+  title: "It's well",
+  description: "It's well - Descripción",
 };
 
 export default function RootLayout({

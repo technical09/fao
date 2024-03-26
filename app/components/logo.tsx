@@ -1,8 +1,8 @@
 import Image from "next/image";
 
-export default function LogoQualitas(){
+export default function LogoApp(){
     return(
-        <div className="flex flex-col justify-center items-center p-4 bg-gray-100">
+        <div className="flex justify-center items-center bg-gray-100 p-0">
               <Image
                 src="/next.svg"
                 alt="Logo"

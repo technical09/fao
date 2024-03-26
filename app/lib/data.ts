@@ -1,4 +1,5 @@
 import prisma from "./prisma";
+import { users } from "@prisma/client";
 
 // List food groups from API (table Grupos in DB)
 export async function getGroupsApi() {
@@ -43,6 +44,20 @@ export async function fetchFoodComponents(idfood: number){
 // Get all foods that contain a component from API
 export async function fetchFoodsByComponent(){
 
+}
+
+// Get user by email
+export async function getUserFromDb(email: string):Promise<users|null>{
+  const res =await  prisma.users.findUnique({
+    where:{
+      email: email,
+    }
+  });
+  if(!res){
+    console.error("No se pudo obtener la información del usuario.");
+    throw new Error("No se pudo obtener la información del usuario.");
+  }
+  return res;
 }
 
 
