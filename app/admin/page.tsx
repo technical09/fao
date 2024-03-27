@@ -1,3 +1,8 @@
+// Default page for admin route
+// Login form to access admin panel for add/edit/delete users who can access application
+// Only admin users should get access
+// *** TODO ***
+
 import LoginForm from "../components/loginform";
 
 

@@ -1,14 +1,12 @@
-import Image from "next/image";
+// Landing page. Includes component <LogoApp>, some text for company introduction
+// and link button to access main menu if logged in (otherwise redirects to login route)
+// Offers a link for Contact or Support that refers to /contact route ** TODO **
+
 import LogoApp from "./components/logo";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    //<main className="flex min-h-screen flex-col items-center justify-between p-24">
-    //  <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-       
-    //  </div>
-    //</main>
     <div>
       <LogoApp />
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-100">
@@ -26,8 +24,12 @@ export default function Home() {
       </div>
       <div className="flex justify-center items-center mt-8">
         <p className="text-lg mb-8 px-4 md:px-0">
-          Puede volver a la web de itswell.com pulsando <Link className="underline decoration-neutral-800 decoration-2 underline-offset- hover:decoration-black hover:decoration-3" href="https://www.itswell.com">aquí</Link>
-          </p>
+          Puede volver a la web de itswell.com pulsando <Link
+            className="p-1 underline decoration-neutral-800 decoration-2 underline-offset-2 hover:text-white hover:decoration-black hover:decoration-3 hover:bg-black hover:rounded"
+            href="https://www.itswell.com">aquí
+          </Link>
+        </p>
+          
       </div>
   </div>
   </div>

@@ -1,3 +1,5 @@
+// API route to get a list of all existing groups food (DB table "grupo")
+
 import prisma from "@/app/lib/prisma";
 import { NextResponse } from "next/server";
 

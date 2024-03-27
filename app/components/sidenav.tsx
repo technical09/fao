@@ -1,3 +1,6 @@
+// Lateral menu used en main page
+// include logo and navlinks components
+
 import NavLinks from "./navlinks";
 import LogoApp from "./logo";
 

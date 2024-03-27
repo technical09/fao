@@ -1,3 +1,6 @@
+// Deafult layout for APP
+// Need to update info about title and description for production
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";

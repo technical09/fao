@@ -1,5 +1,9 @@
+// Login form component.
+// Used for users to login to application and for admin route
+
 export default function LoginForm({admin}:{admin: boolean}){
-    //console.log(params);
+    // Prop "admin" to true/false to filter whether component is used in admin route ("/admin")
+    // or for users access. Title and others visual details change. 
     const titleLogin="Acceda con su datos de usuario";
     const titleAdmin="Acceso al mantenimiento de usuarios";
 

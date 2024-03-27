@@ -1,3 +1,6 @@
+// Functions to access database and API routes
+// Will be imported by routes that need to access DB
+
 import prisma from "./prisma";
 import { users } from "@prisma/client";
 
@@ -43,7 +46,7 @@ export async function fetchFoodComponents(idfood: number){
 
 // Get all foods that contain a component from API
 export async function fetchFoodsByComponent(){
-
+  // TODO if needed
 }
 
 // Get user by email

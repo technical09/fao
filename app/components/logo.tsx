@@ -1,3 +1,6 @@
+// Logo component. Include demo image
+// ** TODO: change image to real itswell.com logo when available **
+
 import Image from "next/image";
 
 export default function LogoApp(){
