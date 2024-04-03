@@ -18,7 +18,7 @@ export default async function NavLinks(){
     <>
     <div className="flex rounded-md hover:bg-black hover:text-white">
     <Link
-      href="/search">
+      href="/panel/search">
     <span className="text-xl p-4 pb-4 ">Buscador</span>
     </Link>
     </div>

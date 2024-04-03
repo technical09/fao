@@ -49,7 +49,7 @@ export async function fetchFoodsByComponent(){
   // TODO if needed
 }
 
-// Get user by email
+// Get user by email (TODO: future use for Auth)
 export async function getUserFromDb(email: string):Promise<users|null>{
   const res =await  prisma.users.findUnique({
     where:{

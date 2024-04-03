@@ -71,11 +71,20 @@ model tipo {
 }
 
 model users {
-  id          Bytes   @id @default(dbgenerated("(uuid())")) @db.Binary(16)
-  email       String  @unique(map: "email") @db.VarChar(255)
-  pass        String  @db.VarChar(60)
-  contactname String? @db.VarChar(255)
-  comments    String? @db.VarChar(255)
-  isadmin     Boolean @default(false)
-  user        String  @db.VarChar(100)
+  id          Bytes      @id @default(dbgenerated("(uuid())")) @db.Binary(16)
+  email       String     @unique(map: "email") @db.VarChar(255)
+  pass        String     @db.VarChar(60)
+  contactname String?    @db.VarChar(255)
+  comments    String?    @db.VarChar(255)
+  user        String     @db.VarChar(100)
+  rol         Int?
+  users_rol   users_rol? @relation(fields: [rol], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "users_rol")
+
+  @@index([rol], map: "users_rol")
+}
+
+model users_rol {
+  id    Int     @id
+  rol   String? @db.VarChar(50)
+  users users[]
 }

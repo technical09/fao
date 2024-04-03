@@ -24,7 +24,7 @@ export default function Group({ params }: { params: { idgroup: number } }) {
     const [groupData, setGroupData] = useState(null);
     // Manage loading state
     const [isLoading, setIsLoading] = useState(true);
-    // title for data-table
+    // title for react-data-table-component
     const table_title = "Alimentos grupo " + `${idgroup}`+" - ";
 
     useEffect(() => {
@@ -36,7 +36,8 @@ export default function Group({ params }: { params: { idgroup: number } }) {
                 
                 // Obtener información de todos los grupos
                 const groups = await getGroupsApi();
-                // Filtrar el grupo con el idgroup deseao para obtener el nombre del grupo y poder mostrarlo en el título
+                // Filtrar el grupo con el idgroup deseao para obtener el nombre del grupo
+                // y poder mostrarlo en el título de la página
                 const grupo= groups.find((group: any) => group.idgroup == idgroup);
                 setGroupData(grupo.name);
 
@@ -48,7 +49,7 @@ export default function Group({ params }: { params: { idgroup: number } }) {
         getData();
     }, []);
 
-    return (// Render react-data-table-component. When a row is clicked, load specific food page info
+    return (// Render react-data-table-component. When a row is clicked, load specific food info page
         <>
             {!isLoading && groupData && ( // Info ya cargada y groupData existe y tiene datos
                 <DataTable
